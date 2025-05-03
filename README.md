@@ -8,7 +8,7 @@ See [action.yml](action.yml)
 
 ```yml
 - name: Markdown to BBCode
-  uses: ./
+  uses: kaiser-chris/md2steam-github-action@v1
   with:
     # Required: Path to the Markdown file to convert
     file: ''
@@ -17,7 +17,7 @@ See [action.yml](action.yml)
 ### Example
 ```yml
 - uses: actions/checkout@v4
-- uses: actions/md2steam@v1
+- uses: kaiser-chris/md2steam-github-action@v1
   id: conversion
   with:
     file: 'Test.md'
