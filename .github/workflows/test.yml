@@ -1,0 +1,15 @@
+name: Test Action
+
+on:
+  workflow_dispatch:
+
+jobs:
+  test:
+    name: "Run Test.md"
+    runs-on: ubuntu-latest
+    
+    steps:
+      - name: md2steam
+        uses: ./
+        with:
+          file: 'Test.md'
