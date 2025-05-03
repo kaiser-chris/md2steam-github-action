@@ -1,9 +1,14 @@
 name: 'md2steam'
 description: 'A github action that converts Markdown to Steam BBCode'
+branding:
+  icon: 'align-justify'
+  color: 'blue'
+
 inputs:
   file:
     description: 'Path to the Markdown file to convert'
     required: true
+
 outputs:
   bbcode:
     description: 'Resulting BBCode'
