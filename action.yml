@@ -1,0 +1,30 @@
+name: 'md2steam'
+description: 'A github action that converts Markdown to Steam BBCode'
+inputs:
+  file:
+    description: 'Relative markdown file path'
+    required: true
+outputs:
+  bbcode:
+    description: 'Resulting BBCode'
+    value: ${{ steps.convert.outputs.bbcode }}
+
+runs:
+  using: "composite"
+  steps:
+    - name: Setup Node.js environment
+      uses: actions/setup-node@v4.4.0
+
+    - name: Load Dependencies
+      run: npm install
+      shell: sh
+
+    - name: Validate Mod
+      id: convert
+      run: |
+        {
+          echo 'bbcode<<EOF'
+          echo "$(node src/index.js ${{ inputs.file }})"
+          echo EOF
+        } >> "$GITHUB_OUTPUT"
+      shell: sh
