@@ -9,7 +9,10 @@ jobs:
     runs-on: ubuntu-latest
     
     steps:
-      - name: md2steam
+      - name: Markdown to BBCode
+        id: conversion
         uses: ./
         with:
           file: 'Test.md'
+      - name: Results
+        run: echo "${{ steps.conversion.outputs.bbcode }}" >> $GITHUB_STEP_SUMMARY
