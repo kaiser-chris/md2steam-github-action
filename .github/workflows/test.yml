@@ -11,11 +11,17 @@ jobs:
     steps:
       - name: Checkout
         uses: actions/checkout@v4.2.2
+        with:
+          repository: kaiser-chris/pdx-deepl
 
       - name: Markdown to BBCode
         id: conversion
-        uses: ./
+        uses: kaiser-chris/md2steam-github-action@v1
         with:
-          file: 'Test.md'
+          file: 'README.md'
+
       - name: Results
-        run: echo "${{ steps.conversion.outputs.bbcode }}" >> $GITHUB_STEP_SUMMARY
+        run: |
+          echo "\`\`\`" >> $GITHUB_STEP_SUMMARY
+          echo "${{ steps.conversion.outputs.bbcode }}" >> $GITHUB_STEP_SUMMARY
+          echo "\`\`\`" >> $GITHUB_STEP_SUMMARY

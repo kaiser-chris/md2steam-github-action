@@ -21,7 +21,9 @@ runs:
       uses: actions/setup-node@v4.4.0
 
     - name: Load Dependencies
-      run: npm install
+      run: |
+        cd ${{github.action_path}}
+        npm install
       shell: sh
 
     - name: Validate Mod
@@ -29,7 +31,7 @@ runs:
       run: |
         {
           echo 'bbcode<<EOF'
-          echo "$(node src/index.js ${{ inputs.file }})"
+          echo "$(node "${{github.action_path}}/src/index.js" "${{ inputs.file }}")"
           echo EOF
         } >> "$GITHUB_OUTPUT"
       shell: sh
